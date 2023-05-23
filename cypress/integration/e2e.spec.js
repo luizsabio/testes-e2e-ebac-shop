@@ -14,7 +14,13 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        //TODO 
+        cy.get('#primary-menu > .menu-item-629 > a').click()
+        cy.get(' .product-block').eq(0).click()
+        cy.get('.button-variable-item-M').click()
+        cy.get('.button-variable-item-Blue').click()
+        cy.get('.input-text').click().clear().type(1)
+        cy.get('.single_add_to_cart_button').click()
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', 1)
     });
 
 
