@@ -5,7 +5,7 @@ const Lastname = faker.person.lastName();
 const empresa = faker.company.name();
 const celular = faker.phone.number('##-#####-####');
 const email = faker.internet.email();
-import Comprar from '../support/page_objects/endereco.pagina'
+import Comprarproduto from '../support/page_objects/endereco.pagina'
 
 
 
@@ -27,7 +27,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
 
     it('Fluxo de pedido -  Deve completar o pedido', () => {
-        Comprar.editardados(Name, Lastname, empresa, celular, email)
+        Comprarproduto.editardados(Name, Lastname, empresa, celular, email)
         cy.get('.woocommerce-notice').should('contain', "Obrigado. Seu pedido foi recebido.")
     });
     
