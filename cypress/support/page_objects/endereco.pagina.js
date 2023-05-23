@@ -1,38 +1,6 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-
-Cypress.Commands.add('login', (usuario, senha) => {
-    cy.get('#username').type(usuario)
-    cy.get('#password').type(senha, {log: false})
-    cy.get('.woocommerce-form > .button').click()
-});
-
-Cypress.Commands.add('comprar', (nome, sobrenome, empresa, pais, rua, cidade ,estado, cep, celular, email) => { 
+class Comprarproduto {
     
+    editardados (nome, sobrenome, empresa, celular, email) {
     cy.get('#primary-menu > .menu-item-629 > a').click()
     cy.get(' .product-block').eq(0).click()
     cy.get('.button-variable-item-M').click()
@@ -71,15 +39,18 @@ Cypress.Commands.add('comprar', (nome, sobrenome, empresa, pais, rua, cidade ,es
     cy.get('#billing_first_name').click().type(nome)
     cy.get('#billing_last_name').click().type(sobrenome)
     cy.get('#billing_company').click().type(empresa)
-    cy.get('#select2-billing_country-container').click().type(pais).get('[aria-selected="true"]').click()
-    cy.get('#billing_address_1').click().type(rua)
-    cy.get('#billing_city').click().type(cidade)
-    cy.get('#select2-billing_state-container').click().type(estado + "{enter}")
-    cy.get('#billing_postcode').click().type(cep)
+    cy.get('#select2-billing_country-container').click().type("Brasil").get('[aria-selected="true"]').click()
+    cy.get('#billing_address_1').click().type("Rua do Feijão")
+    cy.get('#billing_city').click().type("Americana")
+    cy.get('#select2-billing_state-container').click().type("São Paulo{enter}")
+    cy.get('#billing_postcode').click().type("13567640")
     cy.get('#billing_phone').click().type(celular)
     cy.get('#billing_email').click().type(email)
     cy.get('#terms').click()
     cy.get('#place_order').click()
-    
 
- })
+}
+
+}
+
+export default new Comprarproduto ()
