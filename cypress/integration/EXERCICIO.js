@@ -28,8 +28,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
 
     it('Fluxo de pedido -  Deve completar o pedido', () => {
+        Produtos.items(0,".button-variable-item-Blue" ,1, 1)
+        Produtos.items(0,".button-variable-item-Blue" ,1, 2)
+        Produtos.items(8,".button-variable-item-Blue" ,1, 3)
+        Produtos.items(0,".button-variable-item-Green" ,1, 4)
         Finalizarpedido.editardados(Name, Lastname, empresa, celular, email)
-        Produtos.items
+        
         cy.get('.woocommerce-notice').should('contain', "Obrigado. Seu pedido foi recebido.")
     });
     
